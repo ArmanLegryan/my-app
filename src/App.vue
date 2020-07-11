@@ -1,18 +1,45 @@
 <template>
-  <div id="app"></div>
+  <div id="app">
+    <div class="container">
+      <h1 class="title">My ToDo App</h1>
+
+      <app-todo-list></app-todo-list>
+    </div>
+  </div>
 </template>
 
 <script>
-export default {};
+import todoList from "./components/todoList";
+export default {
+  components: {
+    appTodoList: todoList
+  }
+};
 </script>
 
 <style lang="scss">
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  width: 100%;
+  max-width: 900px;
+  margin: 5vh auto;
+}
+
+.container {
+  max-width: 700px;
+  width: 100%;
+  margin: 0 auto;
+  height: 90vh;
+}
+
+.title {
   text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
+  margin-bottom: 30px;
 }
 </style>
