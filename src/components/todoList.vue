@@ -28,7 +28,13 @@
         ></b-icon>
 
         <!-- <button @click="editTodo(todo)">edit</button> -->
-        <b-icon class="pointer" @click="editTodo(todo)" icon="pencil" scale="1" variant="primary"></b-icon>
+        <b-icon
+          class="pointer"
+          @click="editTodo(todo)"
+          icon="pencil-square"
+          scale="1"
+          variant="primary"
+        ></b-icon>
 
         <!-- <button @click="removeTodo(index)">delete</button> -->
         <b-icon
