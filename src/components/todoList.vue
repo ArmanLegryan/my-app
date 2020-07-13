@@ -10,20 +10,34 @@
           :class="{done: todo.completed}"
         >{{todo.name}}</span>
 
-        <input
-          style="flex-grow: 1"
+        <b-form-input
           v-else
-          type="text"
           v-model="todo.name"
+          class="border"
           @blur="doneEdit(todo)"
           @keyup.enter="doneEdit(todo)"
-        />
+        ></b-form-input>
 
-        <button @click="todoDone(todo)">done</button>
+        <!-- <button @click="todoDone(todo)">done</button> -->
+        <b-icon
+          class="pointer"
+          @click="todoDone(todo)"
+          icon="check-circle"
+          scale="1"
+          variant="success"
+        ></b-icon>
 
-        <button @click="editTodo(todo)">edit</button>
+        <!-- <button @click="editTodo(todo)">edit</button> -->
+        <b-icon class="pointer" @click="editTodo(todo)" icon="pencil" scale="1" variant="primary"></b-icon>
 
-        <button @click="removeTodo(index)">delete</button>
+        <!-- <button @click="removeTodo(index)">delete</button> -->
+        <b-icon
+          class="pointer"
+          @click="removeTodo(index)"
+          icon="x-circle"
+          scale="1"
+          variant="danger"
+        ></b-icon>
       </div>
     </div>
   </div>
@@ -94,5 +108,10 @@ button {
 
 .todoDone {
   text-decoration: line-through;
+}
+
+.pointer {
+  margin-left: 10px;
+  cursor: pointer;
 }
 </style>

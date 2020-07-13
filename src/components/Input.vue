@@ -1,8 +1,17 @@
 <template>
   <div>
     <form>
-      <input type="text" class="input border" v-model="newTodo" placeholder="Name..." />
-      <button class="btn border" @click.prevent="addTodo">Add ToDo</button>
+      <b-input-group>
+        <b-form-input
+          class="border"
+          v-model="newTodo"
+          placeholder="Name..."
+          @keydown.enter.prevent="addTodo"
+        ></b-form-input>
+        <b-input-group-append>
+          <b-button @click.prevent="addTodo" variant="outline-success">Add Item</b-button>
+        </b-input-group-append>
+      </b-input-group>
     </form>
   </div>
 </template>
@@ -38,16 +47,7 @@ form {
   border-right: none !important;
 }
 
-.btn {
-  padding: 7px 7px 7px 7px;
-  cursor: pointer;
-  color: green;
-  background-color: rgb(245, 245, 239);
-}
-
 .border {
-  height: 30px;
-  border: 1px solid green;
-  outline: none;
+  border-color: #28a745 !important;
 }
 </style>

@@ -25,7 +25,6 @@ export default {
 }
 
 #app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
   width: 100%;
   max-width: 900px;
   margin: 5vh auto;
