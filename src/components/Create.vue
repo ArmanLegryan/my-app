@@ -1,5 +1,7 @@
 <template>
   <div>
+    <app-input @add-todo="addTodo($event)"></app-input>
+
     <div class="main">
       <div class="todos" v-for="(todo, index) of todos" :key="index">
         <span
@@ -61,6 +63,9 @@ export default {
     appInput: Input,
   },
   methods: {
+    addTodo(newTodo) {
+      this.todos.push({ name: newTodo, completed: false, isEditing: false });
+    },
     editTodo(todo) {
       todo.isEditing = true;
     },
