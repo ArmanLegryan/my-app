@@ -18,7 +18,6 @@
           @keyup.enter="doneEdit(todo)"
         ></b-form-input>
 
-        <!-- <button @click="todoDone(todo)">done</button> -->
         <b-icon
           class="pointer"
           @click="todoDone(todo)"
@@ -27,7 +26,6 @@
           variant="success"
         ></b-icon>
 
-        <!-- <button @click="editTodo(todo)">edit</button> -->
         <b-icon
           class="pointer"
           @click="editTodo(todo)"
@@ -36,7 +34,6 @@
           variant="primary"
         ></b-icon>
 
-        <!-- <button @click="removeTodo(index)">delete</button> -->
         <b-icon
           class="pointer"
           @click="removeTodo(index)"
@@ -110,10 +107,6 @@ button {
   & .done {
     text-decoration: line-through;
   }
-}
-
-.todoDone {
-  text-decoration: line-through;
 }
 
 .pointer {
