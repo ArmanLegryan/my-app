@@ -25,11 +25,11 @@ export default {
   },
   methods: {
     addTodo() {
-      if (this.newTodo.length > 0) {
-        this.newTodo.trim();
-        this.$emit("add-todo", this.newTodo);
-      }
-      this.newTodo = "";
+      this.$store.commit("createTodo", {
+        name: this.newTodo,
+        completed: false,
+        isEditing: false
+      });
     }
   }
 };

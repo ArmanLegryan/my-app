@@ -6,8 +6,7 @@
           v-if="!todo.isEditing"
           style="flex-grow: 1"
           :class="{ done: todo.completed }"
-          >{{ todo.name }}</span
-        >
+        >{{ todo.name }}</span>
 
         <b-form-input
           v-else
@@ -47,18 +46,15 @@
 
 <script>
 import Input from "./Input";
+
 export default {
-  data() {
-    return {
-      todos: [
-        { name: "todo 1", completed: false, isEditing: false },
-        { name: "todo 2", completed: false, isEditing: false },
-        { name: "todo 3", completed: false, isEditing: false },
-      ],
-    };
+  computed: {
+    todos() {
+      return this.$store.state.todos;
+    }
   },
   components: {
-    appInput: Input,
+    appInput: Input
   },
   methods: {
     editTodo(todo) {
@@ -72,9 +68,8 @@ export default {
     },
     todoDone(todo) {
       todo.completed = !todo.completed;
-    },
-  },
-  computed: {},
+    }
+  }
 };
 </script>
 
