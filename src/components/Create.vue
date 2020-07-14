@@ -10,16 +10,15 @@
 
 <script>
 import Input from "./Input";
+import { mapState } from 'vuex';
 
 export default {
   components: {
     appInput: Input
   },
   computed: {
-    todos() {
-      return this.$store.state.todos;
-    }
-  }
+    ...mapState(['todos']),
+  },
 };
 </script>
 

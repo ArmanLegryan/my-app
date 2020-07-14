@@ -17,15 +17,18 @@
 </template>
 
 <script>
-export default {
+  import { mapMutations } from 'vuex';
+
+  export default {
   data() {
     return {
       newTodo: ""
     };
   },
   methods: {
+    ...mapMutations(['createTodo']),
     addTodo() {
-      this.$store.commit("createTodo", {
+      this.createTodo({
         name: this.newTodo,
         completed: false,
         isEditing: false
