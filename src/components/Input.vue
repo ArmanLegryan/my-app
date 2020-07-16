@@ -9,7 +9,9 @@
           @keydown.enter.prevent="addTodo"
         ></b-form-input>
         <b-input-group-append>
-          <b-button @click.prevent="addTodo" variant="outline-success">Add Item</b-button>
+          <b-button @click.prevent="addTodo" variant="outline-success"
+            >Add Item</b-button
+          >
         </b-input-group-append>
       </b-input-group>
     </form>
@@ -17,24 +19,25 @@
 </template>
 
 <script>
-  import { mapMutations } from 'vuex';
+import { mapMutations, mapGetters } from "vuex";
 
-  export default {
+export default {
   data() {
     return {
-      newTodo: ""
+      newTodo: "",
     };
   },
   methods: {
-    ...mapMutations(['createTodo']),
+    ...mapMutations(["createTodo"]),
     addTodo() {
       this.createTodo({
         name: this.newTodo,
         completed: false,
-        isEditing: false
+        isEditing: false,
       });
-    }
-  }
+      this.newTodo = "";
+    },
+  },
 };
 </script>
 

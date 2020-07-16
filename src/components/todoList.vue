@@ -1,12 +1,13 @@
 <template>
   <div>
     <div class="main">
-      <div class="todos" v-for="(todo, index) of todos" :key="index">
+      <div class="todos" v-for="(todo, index) of TODOS" :key="index">
         <span
           v-if="!todo.isEditing"
           style="flex-grow: 1"
           :class="{ done: todo.completed }"
-        >{{ todo.name }}</span>
+          >{{ todo.name }}</span
+        >
 
         <b-form-input
           v-else
@@ -18,7 +19,7 @@
 
         <b-icon
           class="pointer"
-          @click="todoDone(todo)"
+          @click="completeDone(todo)"
           icon="check-circle"
           scale="1"
           variant="success"
@@ -26,7 +27,7 @@
 
         <b-icon
           class="pointer"
-          @click="editTodo(todo)"
+          @click="todoEdit(todo)"
           icon="pencil-square"
           scale="1"
           variant="primary"
@@ -34,7 +35,7 @@
 
         <b-icon
           class="pointer"
-          @click="removeTodo(index)"
+          @click="removeTodo(todo)"
           icon="x-circle"
           scale="1"
           variant="danger"
@@ -46,29 +47,40 @@
 
 <script>
 import Input from "./Input";
-import { mapState } from 'vuex';
+import { mapState, mapActions, mapGetters } from "vuex";
 
 export default {
   computed: {
-    ...mapState(['todos']),
+    ...mapGetters(["TODOS"]),
   },
   components: {
-    appInput: Input
+    appInput: Input,
   },
+
   methods: {
-    editTodo(todo) {
-      todo.isEditing = true;
+    ...mapActions([
+      "GET_TODOS_FROM_API",
+      "TODO_DONE",
+      "TODO_EDIT",
+      "DONE_EDIT",
+      "REMOVE_TODO",
+    ]),
+    completeDone(todo) {
+      this.$store.dispatch("TODO_DONE", todo);
+    },
+    todoEdit(todo) {
+      this.$store.dispatch("TODO_EDIT", todo);
     },
     doneEdit(todo) {
-      todo.isEditing = false;
+      this.$store.dispatch("DONE_EDIT", todo);
     },
-    removeTodo(index) {
-      this.todos.splice(index, 1);
+    removeTodo(todo) {
+      this.$store.dispatch("REMOVE_TODO", todo);
     },
-    todoDone(todo) {
-      todo.completed = !todo.completed;
-    }
-  }
+  },
+  mounted() {
+    this.GET_TODOS_FROM_API();
+  },
 };
 </script>
 
